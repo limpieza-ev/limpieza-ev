@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limpieza E-V | Trash Bin Cleaning</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7f5;color:#18322a}
+header{background:#1f6f50;color:white;text-align:center;padding:32px 18px}
+header h1{margin:0;font-size:34px}
+header p{font-size:18px;margin:10px 0 0}
+.lang{margin-top:18px}
+.lang button{border:0;border-radius:20px;padding:9px 16px;margin:3px;cursor:pointer;font-weight:bold}
+.lang button.active{background:#ffd447}
+.container{max-width:700px;margin:25px auto;padding:0 16px}
+.card{background:white;border-radius:18px;padding:24px;margin-bottom:18px;box-shadow:0 4px 18px #00000012}
+h2{margin-top:0;color:#1f6f50}
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.price{border:2px solid #e1ebe5;border-radius:12px;padding:14px;display:flex;justify-content:space-between}
+.price strong{color:#1f6f50}
+label{display:block;margin:14px 0 6px;font-weight:bold}
+input,select{width:100%;padding:13px;border:1px solid #cbd8d1;border-radius:10px;font-size:16px}
+button.submit{width:100%;margin-top:20px;background:#1f6f50;color:white;border:0;border-radius:12px;padding:16px;font-size:18px;font-weight:bold;cursor:pointer}
+.note{font-size:14px;color:#5a6c64;margin-top:10px}
+footer{text-align:center;padding:25px;color:#60736b}
+@media(max-width:480px){.prices{grid-template-columns:1fr}header h1{font-size:29px}}
+</style>
+
+<style>
+.logo-wrap{display:flex;justify-content:center;margin:0 auto 8px}.bin-logo{width:120px;height:120px;filter:drop-shadow(0 8px 12px #063b7030)}
+</style>
+</head>
+<body>
+<header>
+
+<div class="logo-wrap">
+<svg class="bin-logo" viewBox="0 0 220 220" aria-label="Bote limpio brillante con salpicaduras de agua">
+<defs>
+<linearGradient id="binG" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#1d8be0"/><stop offset="1" stop-color="#0b4d8f"/></linearGradient>
+<linearGradient id="waterG"><stop offset="0" stop-color="#77e8ff"/><stop offset="1" stop-color="#1ca8ff"/></linearGradient>
+</defs>
+<path d="M43 61 Q110 45 177 61 L164 169 Q110 187 56 169Z" fill="url(#binG)" stroke="#063b70" stroke-width="5"/>
+<path d="M37 57 Q110 39 183 57 L179 70 Q110 52 41 70Z" fill="#123f6d" stroke="#063b70" stroke-width="4"/>
+<path d="M78 45 Q110 27 142 45 L137 56 Q110 45 83 56Z" fill="#164b78"/>
+<path d="M68 82 Q75 150 78 158" fill="none" stroke="#bdefff" stroke-width="7" opacity=".75"/>
+<path d="M107 73 L111 157" stroke="#e9fbff" stroke-width="5" opacity=".55"/>
+<g fill="url(#waterG)">
+<circle cx="30" cy="93" r="7"/><circle cx="22" cy="116" r="4"/><circle cx="190" cy="92" r="7"/><circle cx="201" cy="116" r="4"/>
+<circle cx="52" cy="35" r="5"/><circle cx="169" cy="34" r="5"/>
+<path d="M28 77 Q18 62 31 48 Q31 64 40 72Z"/><path d="M190 78 Q202 62 189 47 Q189 64 180 72Z"/>
+</g>
+<g fill="#fff"><path d="M132 92 l4 9 10 4-10 4-4 10-4-10-10-4 10-4z"/><path d="M151 122 l3 7 7 3-7 3-3 8-3-8-7-3 7-3z"/></g>
+</svg>
+</div>
+  <h1>LIMPIEZA E-V</h1>
+  <p id="tagline">Limpieza y desinfección de botes de basura</p>
+  <div class="lang">
+    <button id="esBtn" class="active" onclick="setLang('es')">🇪🇸 Español</button>
+    <button id="enBtn" onclick="setLang('en')">🇺🇸 English</button>
+  </div>
+</header>
+
+<div class="container">
+  <section class="card">
+    <h2 id="priceTitle">Precios</h2>
+    <div class="prices">
+      <div class="price"><span>1 bote</span><strong>$25</strong></div>
+      <div class="price"><span>2 botes</span><strong>$45</strong></div>
+      <div class="price"><span>3 botes</span><strong>$65</strong></div>
+      <div class="price"><span>4 botes</span><strong>$85</strong></div>
+      <div class="price"><span>5 botes</span><strong>$105</strong></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 id="bookTitle">📅 Reservar cita</h2>
+    <form id="bookingForm">
+      <label id="nameLabel">Nombre</label>
+      <input id="name" required>
+
+      <label id="phoneLabel">Número de teléfono</label>
+      <input id="phone" type="tel" required>
+
+      <label id="addressLabel">Dirección</label>
+      <input id="address" required>
+
+      <label id="binsLabel">Cantidad de botes</label>
+      <select id="bins" required>
+        <option value="1">1 bote — $25</option>
+        <option value="2">2 botes — $45</option>
+        <option value="3">3 botes — $65</option>
+        <option value="4">4 botes — $85</option>
+        <option value="5">5 botes — $105</option>
+      </select>
+
+      <label id="dateLabel">Fecha</label>
+      <input id="date" type="date" required>
+
+      <label id="timeLabel">Hora preferida</label>
+      <input id="time" type="time" required>
+
+      <button class="submit" id="submitBtn" type="submit">📱 Enviar reserva por mensaje de texto</button>
+      <p class="note" id="note">Al enviar, se abrirá la aplicación de mensajes de tu teléfono con la información de la reserva.</p>
+    </form>
+  </section>
+</div>
+
+<footer>© <span id="year"></span> Limpieza E-V</footer>
+
+<script>
+const phoneNumber = "18643461416";
+const texts = {
+es:{
+tag:"Limpieza y desinfección de botes de basura", prices:"Precios", book:"📅 Reservar cita",
+name:"Nombre", phone:"Número de teléfono", address:"Dirección", bins:"Cantidad de botes",
+date:"Fecha", time:"Hora preferida", send:"📱 Enviar reserva por mensaje de texto",
+note:"Al enviar, se abrirá la aplicación de mensajes de tu teléfono con la información de la reserva."
+},
+en:{
+tag:"Trash bin cleaning and sanitizing", prices:"Prices", book:"📅 Book an Appointment",
+name:"Name", phone:"Phone number", address:"Address", bins:"Number of bins",
+date:"Date", time:"Preferred time", send:"📱 Send booking by text message",
+note:"When you submit, your phone's messaging app will open with the booking information."
+}};
+let lang="es";
+function setLang(l){
+ lang=l; const t=texts[l];
+ document.getElementById("tagline").textContent=t.tag;
+ document.getElementById("priceTitle").textContent=t.prices;
+ document.getElementById("bookTitle").textContent=t.book;
+ document.getElementById("nameLabel").textContent=t.name;
+ document.getElementById("phoneLabel").textContent=t.phone;
+ document.getElementById("addressLabel").textContent=t.address;
+ document.getElementById("binsLabel").textContent=t.bins;
+ document.getElementById("dateLabel").textContent=t.date;
+ document.getElementById("timeLabel").textContent=t.time;
+ document.getElementById("submitBtn").textContent=t.send;
+ document.getElementById("note").textContent=t.note;
+ document.documentElement.lang=l;
+ document.getElementById("esBtn").classList.toggle("active",l==="es");
+ document.getElementById("enBtn").classList.toggle("active",l==="en");
+}
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("date").min=new Date().toISOString().split("T")[0];
+
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const prices={1:25,2:45,3:65,4:85,5:105};
+ const bins=document.getElementById("bins").value;
+ const name=document.getElementById("name").value.trim();
+ const phone=document.getElementById("phone").value.trim();
+ const address=document.getElementById("address").value.trim();
+ const date=document.getElementById("date").value;
+ const time=document.getElementById("time").value;
+ let message;
+ if(lang==="es"){
+   message=`NUEVA RESERVA - LIMPIEZA E-V\nNombre: ${name}\nTeléfono: ${phone}\nDirección: ${address}\nBotes: ${bins}\nPrecio: $${prices[bins]}\nFecha: ${date}\nHora: ${time}`;
+ }else{
+   message=`NEW BOOKING - LIMPIEZA E-V\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nBins: ${bins}\nPrice: $${prices[bins]}\nDate: ${date}\nTime: ${time}`;
+ }
+ window.location.href=`sms:${phoneNumber}?&body=${encodeURIComponent(message)}`;
+});
+</script>
+</body>
+</html>
