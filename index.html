@@ -56,8 +56,9 @@ footer{text-align:center;padding:25px;color:#60736b}
   <h1>LIMPIEZA E-V</h1>
   <p id="tagline">Limpieza y desinfección de botes de basura</p>
   <div class="lang">
-    <button id="esBtn" class="active" onclick="setLang('es')">🇪🇸 Español</button>
-    <button id="enBtn" onclick="setLang('en')">🇺🇸 English</button>
+<button id="esBtn" class="active" type="button">🇪🇸 Español</button>
+
+<button id="enBtn" type="button">🇺🇸 English</button>
   </div>
 </header>
 
@@ -160,6 +161,17 @@ document.getElementById("bookingForm").addEventListener("submit",function(e){
    message=`NEW BOOKING - LIMPIEZA E-V\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nBins: ${bins}\nPrice: $${prices[bins]}\nDate: ${date}\nTime: ${time}`;
  }
  window.location.href=`sms:${phoneNumber}?&body=${encodeURIComponent(message)}`;
+});
+  document.getElementById("esBtn").addEventListener("click", function() {
+
+  setLang("es");
+
+});
+
+document.getElementById("enBtn").addEventListener("click", function() {
+
+  setLang("en");
+
 });
 </script>
 </body>
