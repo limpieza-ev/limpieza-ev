@@ -138,6 +138,33 @@ function setLang(l){
  document.getElementById("timeLabel").textContent=t.time;
  document.getElementById("submitBtn").textContent=t.send;
  document.getElementById("note").textContent=t.note;
+  const priceLabels = document.querySelectorAll(".price span");
+
+const priceWords = l === "en"
+
+  ? ["1 bin", "2 bins", "3 bins", "4 bins", "5 bins"]
+
+  : ["1 bote", "2 botes", "3 botes", "4 botes", "5 botes"];
+
+priceLabels.forEach(function(label, index) {
+
+  label.textContent = priceWords[index];
+
+});
+
+const binOptions = document.getElementById("bins").options;
+
+const prices = [25, 45, 65, 85, 105];
+
+binOptions[0].text = priceWords[0] + " — $" + prices[0];
+
+binOptions[1].text = priceWords[1] + " — $" + prices[1];
+
+binOptions[2].text = priceWords[2] + " — $" + prices[2];
+
+binOptions[3].text = priceWords[3] + " — $" + prices[3];
+
+binOptions[4].text = priceWords[4] + " — $" + prices[4];
  document.documentElement.lang=l;
  document.getElementById("esBtn").classList.toggle("active",l==="es");
  document.getElementById("enBtn").classList.toggle("active",l==="en");
